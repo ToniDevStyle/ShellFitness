@@ -60,8 +60,9 @@ body {
   top: 0px;
   width: 700px;
   height: 800px;
-  margin-top: -330px;
-  filter: drop-shadow(0 0 10px rgba(228,226,221,255));
+  margin-top: -390px;
+  filter: drop-shadow(0 0 8px rgba(255,137,169,255));
+  opacity: 0.8;
 
 }
 
@@ -125,7 +126,9 @@ body {
   }
 
   .hero-banner-img {
-    display: none;
+    width: 500px;
+    height: 600px;
+    margin-top: -200px;
   }
 
   .exercise-card {
@@ -137,6 +140,34 @@ body {
     height: 300px;
   }
 
+}
+
+@media screen and (max-width:925px) {
+  .hero-banner-img {
+    width: 350px;
+    height: 450px;
+    margin-top: -200px;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .hero-banner-img {
+    width: 250px;
+    height: 350px;
+    margin-top: -100px;
+  }
+}
+
+@media screen and (max-width:625px) {
+  .hero-banner-img {
+   display: none;
+  }
+
+  .box-her{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width:400px) {
