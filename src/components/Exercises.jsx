@@ -1,9 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { Box, Typography } from '@mui/material';
 
-const Exercises = () => {
+const Exercises = ({ exercises, setExercises, bodyPart }) => {
+  // Component logic and JSX here
+
   return (
-    <div>Exercises</div>
-  )
+    <Box>
+      <Typography variant="h3">Exercises</Typography>
+      {/* Render the list of exercises here */}
+    </Box>
+  );
 }
 
-export default Exercises
+export default Exercises;

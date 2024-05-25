@@ -24,14 +24,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FF2625;
+  color: #fff;
   font-size: 25px;
   border-radius: 4px;
   position: absolute;
-  bottom: -20px;
-  right: 80px;
-  transform: scale(1, 1);
+  bottom: -270px;
+  right: 10px;
+  left: 1100px;
+  transform: scale(0.1, 0.1);
   transition: 0.3s all ease-in-out;
+
+  /* top: 50%; */
 }
 
 .right-arrow {
@@ -40,7 +43,9 @@ body {
 
 .right-arrow:hover,
 .left-arrow:hover {
-  transform: scale(1.3, 1.3);
+  transform: scale(0.12, 0.12);
+  filter: drop-shadow(0 0 100px rgba(255,137,169,255));
+
 }
 
 .react-horizontal-scrolling-menu--wrapper {
@@ -88,16 +93,19 @@ body {
 .bodyPart-card {
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
+  color: white; 
 }
 
 .exercise-card:hover,
 .bodyPart-card:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.01, 1.01);
 }
 
 .search-btn:hover {
   /* color: white !important; */
   border: 2px solid white !important;
+  filter: drop-shadow(0 0 100px rgba(255,137,169,255));
+
 }
 
 .exercise-video {

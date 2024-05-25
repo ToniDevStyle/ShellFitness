@@ -5,10 +5,9 @@ import { exerciseOptions, fetchData } from '../utils/fetchData';
 import HorizontalScrollBar from './HorizontalScrollBar';
 
 // Define the functional component SearchExercises
-const SearchExercises = () => {
+const SearchExercises = ( {setExercises, bodyPart, setBodyPart}) => {
   // Initialize state variables
   const [search, setSearch] = useState(''); // State for search input
-  const [exercises, setExercises] = useState([]); // State for list of exercises
   const [bodyParts, setBodyParts] = useState([]); // State for list of body parts
 
   // useEffect hook to fetch body parts data when the component mounts
@@ -106,7 +105,7 @@ const SearchExercises = () => {
       </Box>
       {/* Horizontal scroll bar for body parts */}
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-        <HorizontalScrollBar data={bodyParts} />
+        <HorizontalScrollBar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
       </Box>
     </Stack>
   );
