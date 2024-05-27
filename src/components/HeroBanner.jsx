@@ -49,7 +49,7 @@ const HeroBanner = () => {
       </Typography>
       <Typography
         fontWeight={700}
-        sx={{ fontSize: { lg: "44px", xs: "40px" } }}
+        sx={{ fontSize: { lg: "74px", xs: "70px" } }}
         mb="23px"
         mt="30px"
       >
