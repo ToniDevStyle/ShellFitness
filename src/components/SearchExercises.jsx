@@ -1,78 +1,112 @@
-// Import necessary libraries and components from React and MUI
+// Importa las librerías y componentes necesarios
 import React, { useEffect, useState } from 'react'; 
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
+
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import HorizontalScrollBar from './HorizontalScrollBar';
 
-// Define the functional component SearchExercises
-const SearchExercises = ( {setExercises, bodyPart, setBodyPart}) => {
-  // Initialize state variables
-  const [search, setSearch] = useState(''); // State for search input
-  const [bodyParts, setBodyParts] = useState([]); // State for list of body parts
+// Define el componente funcional SearchExercises
+const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
+  // Inicializa las variables de estado
+  const [search, setSearch] = useState(''); // Estado para el término de búsqueda
+  const [bodyParts, setBodyParts] = useState([]); // Estado para la lista de partes del cuerpo
 
-  // useEffect hook to fetch body parts data when the component mounts
+  // useEffect para obtener datos de las partes del cuerpo cuando el componente se monta
   useEffect(() => {
-    // Define an async function to fetch body parts data
-    const fetchExercisesData = async () => {
+    const fetchBodyPartsData = async () => {
       try {
-        // Fetch data from the API
         const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
-        console.log('Body parts data:', bodyPartsData); // Debugging log
+        console.log('Body parts data:', bodyPartsData);
         if (Array.isArray(bodyPartsData)) {
-          // If the fetched data is an array, update the bodyParts state
           setBodyParts(['all', ...bodyPartsData]);
         } else {
-          // Log an error if the fetched data is not an array
           console.error('bodyPartsData is not an array:', bodyPartsData);
         }
       } catch (error) {
-        // Log an error if fetching data fails
         console.error('Failed to fetch body parts data:', error);
       }
     };
 
-    // Call the async function
-    fetchExercisesData();
-  }, []); // Empty dependency array ensures this runs once on mount
+    fetchBodyPartsData();
+  }, []);
 
-  // Function to handle search logic
+  // Función para manejar la lógica de búsqueda
   const handleSearch = async () => {
     if (search) {
       try {
-        // Fetch exercises data from the API
-        const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
-        console.log('Exercises data:', exercisesData); // Debugging log
+        const exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises?limit=1300', exerciseOptions);
+        console.log('Exercises data:', exercisesData);
         if (Array.isArray(exercisesData)) {
-          // Filter exercises based on search input
-          const searchedExercises = exercisesData.filter((exercise) =>
-            exercise.name.toLowerCase().includes(search) ||
-            exercise.target.toLowerCase().includes(search) ||
-            exercise.equipment.toLowerCase().includes(search) ||
-            exercise.bodyPart.toLowerCase().includes(search)
+          const searchedExercises = exercisesData.filter((item) =>
+            item.name.toLowerCase().includes(search) ||
+            item.target.toLowerCase().includes(search) ||
+            item.equipment.toLowerCase().includes(search) ||
+            item.bodyPart.toLowerCase().includes(search)
           );
-          // Update exercises state with the filtered exercises
+          console.log("filtered: ", searchedExercises);
+          setSearch('');
           setExercises(searchedExercises);
         } else {
-          // Log an error if the fetched data is not an array
           console.error('exercisesData is not an array:', exercisesData);
         }
-        // Clear the search input
-        setSearch('');
       } catch (error) {
-        // Log an error if fetching data fails
         console.error('Failed to fetch exercises data:', error);
       }
     }
   };
 
-  // Return JSX to render the component
+//    // Function to handle search logic
+// const handleSearch = async () => {
+//   if (search) {
+//     try {
+//       let allExercises = [];
+//       let currentPage = 1;
+//       let totalPages = 1;
+
+//       // Fetch exercises data from the API
+//       do {
+//         const exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises?page=${currentPage}&limit=100`, exerciseOptions);
+//         console.log('Exercises data (page', currentPage, '):', exercisesData); // Debugging log
+        
+//         if (Array.isArray(exercisesData)) {
+//           allExercises = [...allExercises, ...exercisesData];
+//           totalPages = exercisesData.meta.totalPages; // Assuming the API provides metadata about total pages
+//         } else {
+//           console.error('exercisesData is not an array:', exercisesData);
+//           break;
+//         }
+
+//         currentPage++;
+//       } while (currentPage <= totalPages);
+
+//       console.log('All exercises:', allExercises);
+
+//       // Filter exercises based on search input
+//       const searchedExercises = allExercises.filter((item) =>
+//         item.name.toLowerCase().includes(search.toLowerCase()) ||
+//         item.target.toLowerCase().includes(search.toLowerCase()) ||
+//         item.equipment.toLowerCase().includes(search.toLowerCase()) ||
+//         item.bodyPart.toLowerCase().includes(search.toLowerCase())
+//       );
+
+//       // Update exercises state with the filtered exercises
+//       console.log("filtered: ", searchedExercises);
+//       setExercises(searchedExercises);
+      
+//     } catch (error) {
+//       // Log an error if fetching data fails
+//       console.error('Failed to fetch exercises data:', error);
+//     }
+//   }
+// };
+
+
+  // JSX para renderizar el componente
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
-      {/* Title section */}
       <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="50px" textAlign="center">
         Awesome Exercises You <br /> Should Know
       </Typography>
-      {/* Search box section */}
       <Box position="relative" mb="72px">
         <TextField
           sx={{
@@ -84,8 +118,8 @@ const SearchExercises = ( {setExercises, bodyPart, setBodyPart}) => {
             width: { lg: '800px', xs: '350px' }
           }}
           height="76px"
-          value={search} // Controlled input value
-          onChange={(e) => setSearch(e.target.value.toLowerCase())} // Update search state on input change
+          value={search}
+          onChange={(e) => setSearch(e.target.value.toLowerCase())}
           placeholder='Search Exercises'
           type='text'
           className='exercises-text-field'
@@ -98,18 +132,17 @@ const SearchExercises = ( {setExercises, bodyPart, setBodyPart}) => {
             fontSize: { lg: '20px', xs: '14px' }, height: '56px', position: 'absolute',
             right: '0'
           }}
-          onClick={handleSearch} // Trigger search on button click
+          onClick={handleSearch}
         >
           Search
         </Button>
       </Box>
-      {/* Horizontal scroll bar for body parts */}
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>
-        <HorizontalScrollBar data={bodyParts} bodyPart={bodyPart} setBodyPart={setBodyPart}/>
+        <HorizontalScrollBar data={bodyParts} bodyParts bodyPart={bodyPart} setBodyPart={setBodyPart} />
       </Box>
     </Stack>
   );
 }
 
-// Export the SearchExercises component as default
+// Exporta el componente SearchExercises
 export default SearchExercises;
