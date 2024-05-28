@@ -57,6 +57,7 @@ body {
 .detail-image {
   width: 729px;
   height: 742px;
+  margin-left: 30px;
 }
 
 .hero-banner-img {
