@@ -38,7 +38,7 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
       }}
       onClick={() => {
         setBodyPart(item);
-        window.scrollTo({top: 1080, left: 100, behavior: 'smooth'})
+        window.scrollTo({top: 1925, left: 100, behavior: 'smooth'})
       }}
     >
       {iconSrc && ( // Check if iconSrc has been loaded before rendering the icon
