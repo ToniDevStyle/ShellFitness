@@ -125,15 +125,18 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
           className='exercises-text-field'
           variant="outlined"
         />
-        <Button className='search-btn'
-          style={{ backgroundColor: "#ff89a9", color: "black", padding: '15px', opacity: '0.5' }}
-          sx={{
-            width: { lg: '175px', xs: '80px' },
-            fontSize: { lg: '20px', xs: '14px' }, height: '56px', position: 'absolute',
-            right: '0'
-          }}
+        <Button className='btn-class-name'
+          // style={{ backgroundColor: "#ff89a9", color: "black", padding: '15px', opacity: '0.5' }}
+          // sx={{
+          //   width: { lg: '175px', xs: '80px' },
+          //   fontSize: { lg: '20px', xs: '14px' }, height: '56px', position: 'absolute',
+          //   right: '0'
+          // }}
           onClick={handleSearch}
+          
         >
+          <span class="back"></span>
+          <span class="front"></span>
           Search
         </Button>
       </Box>
