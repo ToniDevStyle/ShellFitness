@@ -107,7 +107,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
       <Typography fontWeight={700} sx={{ fontSize: { lg: '44px', xs: '30px' } }} mb="50px" textAlign="center">
         Awesome Exercises You <br /> Should Know
       </Typography>
-      <Box position="relative" mb="72px">
+      <Box position="relative" mb="72px" ml="50px">
         <TextField
           sx={{
             input: {
@@ -127,17 +127,17 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
         />
         <Button className='btn-class-name'
           // style={{ backgroundColor: "#ff89a9", color: "black", padding: '15px', opacity: '0.5' }}
-          // sx={{
-          //   width: { lg: '175px', xs: '80px' },
-          //   fontSize: { lg: '20px', xs: '14px' }, height: '56px', position: 'absolute',
-          //   right: '0'
-          // }}
+           sx={{
+             width: { lg: '80px', xs: '30px' },
+             fontSize: { lg: '20px', xs: '14px' }, height: '56px', position: 'absolute',
+             
+           }}
           onClick={handleSearch}
           
         >
           <span class="back"></span>
           <span class="front"></span>
-          Search
+          
         </Button>
       </Box>
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>

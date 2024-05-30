@@ -49,7 +49,7 @@ const HeroBanner = () => {
       p="20px"
       className={`box-hero ${isHovered ? 'hovered' : ''}`}
     >
-      <Typography color="#e4e2dd" fontWeight="600" fontSize="100px">
+      <Typography color="#e4e2dd" fontWeight="600" fontSize="90px" ml="30px">
         {animateText('Shell')}
         <br />
         {animateText('Fitness')}
@@ -68,10 +68,12 @@ const HeroBanner = () => {
         mb="23px"
         mt="70px"
         className="target"
+        ml="30px"
       >
         Sweat, <span role="img" aria-label="smile">😁</span> and <br />Repeat
       </Typography>
-      <Typography fontSize="22px" lineHeight="35px" mb={4}>
+      <Typography fontSize="22px" lineHeight="35px" mb={4} ml="30px"
+      sx={{ opacity: 0.4, display: { lg: "block", xs: "none" } }}>
         Check out the most effective ...
       </Typography>
 

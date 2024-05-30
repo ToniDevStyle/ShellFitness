@@ -57,7 +57,7 @@ const Detail = ({ exerciseDetail }) => {
           <Stack key={item.name} direction="row" gap="24px" alignItems="center">
             <Button
               sx={{
-                background: "#f2ce90",
+                background: "#eddbc5",
                 borderRadius: "50%",
                 width: "100px",
                 height: "100px",
