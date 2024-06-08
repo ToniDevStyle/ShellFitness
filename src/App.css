@@ -124,7 +124,7 @@ body {
   position: relative;
   transition: .3s;
   top: 45px;
-  right: 50px;
+  right: 70px;
 }
 
 .btn-class-name .back {
@@ -293,6 +293,7 @@ body {
 
 .exercises-text-field .MuiOutlinedInput-root {
   margin: 30px;
+  right: 20px;
   background: none;
   border: none;
   outline: none;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const BodyPart = ({ item, setBodyPart, bodyPart }) => {
   // Use useState to store the icon source
@@ -54,3 +55,4 @@ const BodyPart = ({ item, setBodyPart, bodyPart }) => {
 };
 
 export default BodyPart;
+
